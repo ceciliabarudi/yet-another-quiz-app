@@ -11,7 +11,9 @@
     "test": "react-scripts test",
     "test:ci": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "npx eslint src/** --ext .ts .js --fix --no-error-on-unmatched-pattern",
+    "pretty": "npx prettier --write ."
   },
   "eslintConfig": {
     "extends": [
