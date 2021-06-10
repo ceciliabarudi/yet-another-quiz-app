@@ -1,0 +1,33 @@
+name: Linting, formatting, unit+integration tests
+
+on:
+  push:
+    branch: [ main ]
+  pull_request:
+    branch: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  clean-up-and-test:
+    runs-on: ubuntu-20.04
+     strategy:
+      matrix:
+        node: [12.x] 
+steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Use node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node: ${{ matrix.node }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run Prettier
+        run: npm run pretty
+      - name: Run ESLint
+        run: npm run lint
+      - name: Run tests
+        run: npm run test:ci
