@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { fetchQuizQuestions, QuestionState, Difficulty } from "./API";
 import QuestionCard from "./components/QuestionCard";
 
+import {BaseStyle} from './App.styles'
+
 export type AnswerObject = {
   question: string;
   answer: string;
@@ -68,6 +70,8 @@ const App: React.FunctionComponent = () => {
     questionNumber !== TOTAL_QUESTIONS - 1;
 
   return (
+    <>
+    <BaseStyle />
     <div className="App">
       <h1>Yet Another Quiz App</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
@@ -102,7 +106,7 @@ const App: React.FunctionComponent = () => {
           Unsplash
         </a>
       </footer>
-    </div>
+    </div></>
   );
 };
 
