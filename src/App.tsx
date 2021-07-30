@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { fetchQuizQuestions, QuestionState, Difficulty } from "./API";
 import QuestionCard from "./components/QuestionCard";
 
-import {BaseStyle} from './App.styles'
+import {BaseStyle, Wrapper} from './App.styles'
 
 export type AnswerObject = {
   question: string;
@@ -72,7 +72,7 @@ const App: React.FunctionComponent = () => {
   return (
     <>
     <BaseStyle />
-    <div className="App">
+    <Wrapper>
       <h1>Yet Another Quiz App</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className="start" onClick={startTrivia}>
@@ -106,7 +106,7 @@ const App: React.FunctionComponent = () => {
           Unsplash
         </a>
       </footer>
-    </div></>
+    </Wrapper></>
   );
 };
 
